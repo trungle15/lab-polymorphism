@@ -1,25 +1,11 @@
-// given a text block and a width, builds a new block that 
-// right-justifies the input block within that width.
-public class RightJustified implements TextBlock {
+  // given a text block and a width, builds a new block that centers the block within that width.
+public class Mixed implements TextBlock {
 
   // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+
 
-  /**
-   * TextBlock to center
-   */
   TextBlock content;
-
-  /**
-   * TextBlock Left Margin
-   */
-  TextBlock leftMargin;
-
-  /**
-   * New block width
-   */  
-  int newWidth;
 
   // +--------------+------------------------------------------------------
   // | Constructors |
@@ -28,9 +14,8 @@ public class RightJustified implements TextBlock {
   /**
    * Build a new block by centering content.
    */
-  public RightJustified(TextBlock content, int newWidth) {
+  public Mixed(TextBlock content) {
     this.content = content;
-    this.newWidth = newWidth; 
   }
 
   // +---------+-----------------------------------------------------------
@@ -52,14 +37,19 @@ public class RightJustified implements TextBlock {
       throw new Exception("Invalid row " + i);
     } // if the row is invalid
 
-    String result;
-    String mw = TBUtils.spaces(this.newWidth - (content.width()));
+    TextBlock rjBlock = new RightJustified(content, (this.content.width() + 10));
+    String mw = TBUtils.spaces(10);
 
-    if (i < h) {
-      result =  mw + this.content.row(i);
+    String result;
+
+    if ((i < h) && (i % 2 == 0)) {
+      result = this.content.row(i) + mw;
     }
-    else {
-      result = TBUtils.spaces(Integer.parseInt(mw) + (this.content.width()));
+    else if (i < h) {
+      result = rjBlock.row(i);
+    }
+    else { 
+      result = TBUtils.spaces(this.content.width());
     }
 
     return result;
@@ -77,16 +67,22 @@ public class RightJustified implements TextBlock {
    * Determine how many columns are in the block.
    */
   public int width() {
-    return newWidth;
+    TextBlock rjBlock = new RightJustified(content, (this.content.width() + 10));
+
+    int iw = this.content.width();
+    int rjw = rjBlock.width();
+    int w = Math.max(iw, rjw);
+    return w;
   } // width()
-  
+
   public TextBlock getContent() {
     return content;
   }
 
   public boolean eqv(TextBlock other) {
-    boolean b = other instanceof RightJustified && this instanceof RightJustified;
+    boolean b = other instanceof Mixed && this instanceof Mixed;
     return (b && this.content.eqv(other.getContent()));
   }
-  
-} // class RightJustified
+
+} // class Concated
+

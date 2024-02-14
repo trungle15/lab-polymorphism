@@ -8,7 +8,7 @@ public class Centered implements TextBlock {
   /**
    * TextBlock to center
    */
-  TextBlock initialBlock;
+  TextBlock content;
 
   /**
    * TextBlock Margins
@@ -27,8 +27,8 @@ public class Centered implements TextBlock {
   /**
    * Build a new block by centering content.
    */
-  public Centered(TextBlock initialBlock, int newWidth) {
-    this.initialBlock = initialBlock;
+  public Centered(TextBlock content, int newWidth) {
+    this.content = content;
     this.newWidth = newWidth; 
   }
 
@@ -44,7 +44,7 @@ public class Centered implements TextBlock {
    */
   public String row(int i) throws Exception {
     
-    int h = this.initialBlock.height();
+    int h = this.content.height();
 
     // Sanity check
     if ((i < 0) || (i >= h)) {
@@ -52,17 +52,15 @@ public class Centered implements TextBlock {
     } // if the row is invalid
 
     String result;
-    String mw = TBUtils.spaces((this.newWidth - (initialBlock.width())) / 2);
-
-    // Don't think you need this?
+    String mw = TBUtils.spaces((this.newWidth - (content.width())) / 2);
 
     if (i < h) {
-      result =  mw + this.initialBlock.row(i) + mw;
+      result =  mw + this.content.row(i) + mw;
     }
     else {
-      result = TBUtils.spaces(Integer.parseInt(mw) + (this.initialBlock.width()) + Integer.parseInt(mw));
+      result = TBUtils.spaces(Integer.parseInt(mw) + (this.content.width()) + Integer.parseInt(mw));
     }
-    // result =  mw + this.initialBlock.row(i) + mw;
+
     return result;
 
   } // row(int i)
@@ -71,7 +69,7 @@ public class Centered implements TextBlock {
    * Determine how many rows are in the block.
    */
   public int height() {
-    return this.initialBlock.height();
+    return this.content.height();
   } // height() 
 
   /**
@@ -80,6 +78,15 @@ public class Centered implements TextBlock {
   public int width() {
     return newWidth;
   } // width()
+
+  public TextBlock getContent() {
+    return content;
+  }
+
+  public boolean eqv(TextBlock other) {
+    boolean b = other instanceof Centered && this instanceof Centered;
+    return (b && this.content.eqv(other.getContent()));
+  }
 
 } // class Centered
   

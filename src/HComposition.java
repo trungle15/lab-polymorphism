@@ -83,4 +83,28 @@ public class HComposition implements TextBlock {
     return this.left.width() + this.right.width();
   } // width()
 
+  public TextBlock getLeft() {
+    return left;
+  }
+
+  public TextBlock getRight() {
+    return right;
+  }
+
+  public boolean eqv(TextBlock other) {
+    boolean b = other instanceof HComposition;
+    if (b == false) {
+      return false;
+    } else {
+      HComposition otherV = (HComposition) other;
+      boolean bRight = this.right.eqv(otherV.getRight());
+      boolean bLeft = this.left.eqv(otherV.getLeft());
+      return bRight && bLeft;
+    }
+  }
+
+  public TextBlock getContent() {
+    return this;
+  }
+
 } // class HComposition

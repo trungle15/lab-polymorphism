@@ -26,4 +26,8 @@ public interface TextBlock {
    */
   public int width();
 
+  public TextBlock getContent();
+
+  public boolean eqv(TextBlock textBlock);
+
 } // interface TextBlock

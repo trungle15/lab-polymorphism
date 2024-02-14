@@ -67,6 +67,9 @@ public class TBUtils {
     return lotsOfSpaces.substring(0, len);
   } // spaces(int)
 
+  /**
+   * Compares if two blocks contain the same lines
+   */
   static boolean equal(TextBlock t1, TextBlock t2) throws Exception {
     
     // Check Height
@@ -80,10 +83,18 @@ public class TBUtils {
       }
     }
     return true;
-  }
+  } // boolean equal(TextBlock t1, TextBlock t2)
 
-  // static boolean eq(TextBlock t1, TextBlock t2) {
-    
-  // }
-
+  /**
+   * Compares if two blocks have the same memory locartion
+   */
+  public static boolean eq(TextBlock t1, TextBlock t2) {
+    if (t1 == t2) {
+      return true;
+    } // if
+    else {
+      return false;
+    } // else
+  } // eq(TextBlock block1, TextBlock block2)
 } // class TBUtils
+

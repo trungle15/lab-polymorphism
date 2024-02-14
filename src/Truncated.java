@@ -31,4 +31,12 @@ public class Truncated implements TextBlock{
         return content.width();
     }
     
+    public TextBlock getContent() {
+        return content;
+    }
+
+    public boolean eqv(TextBlock other) {
+    boolean b = other instanceof Truncated && this instanceof Truncated;
+    return (b && this.content.eqv(other.getContent()));
+    }
 }

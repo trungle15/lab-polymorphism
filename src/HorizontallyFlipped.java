@@ -17,4 +17,13 @@ public class HorizontallyFlipped implements TextBlock{
     public int height() {
         return content.height();
     }
+
+    public TextBlock getContent() {
+        return content;
+    }
+
+    public boolean eqv(TextBlock other) {
+        boolean b = other instanceof HorizontallyFlipped && this instanceof HorizontallyFlipped;
+        return (b && this.content.eqv(other.getContent()));
+      }
 }

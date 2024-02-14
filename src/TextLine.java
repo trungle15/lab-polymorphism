@@ -3,6 +3,8 @@
  * 
  * @author Samuel A. Rebelsky
  */
+
+
 public class TextLine implements TextBlock {
   // +--------+------------------------------------------------------------
   // | Fields |
@@ -55,4 +57,17 @@ public class TextLine implements TextBlock {
     return this.line.length();
   } // width()
 
+  public TextBlock getContent() {
+    return this;
+  }
+
+  public boolean eqv(TextBlock other) {
+    boolean b = other instanceof TextLine;
+    if (b == true) {
+      TextLine otherLine = (TextLine) other;
+      return (b && this.line.equals(otherLine.line));
+    } else {
+      return false;
+    }
+  }
 } // class TextLine

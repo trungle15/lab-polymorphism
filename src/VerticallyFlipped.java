@@ -18,4 +18,13 @@ public class VerticallyFlipped implements TextBlock {
     public int width() {
         return content.width();
     }
+
+    public TextBlock getContent() {
+        return content;
+    }
+
+    public boolean eqv(TextBlock other) {
+        boolean b = other instanceof VerticallyFlipped && this instanceof VerticallyFlipped;
+        return (b && this.content.eqv(other.getContent()));
+      }
 }
