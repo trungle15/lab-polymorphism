@@ -67,4 +67,23 @@ public class TBUtils {
     return lotsOfSpaces.substring(0, len);
   } // spaces(int)
 
+  static boolean equal(TextBlock t1, TextBlock t2) throws Exception {
+    
+    // Check Height
+    if (t1.height() != t2.height()) {
+      return false;
+    } else {
+      for (int i = 0; i < t1.height(); i++) {
+        if (!(t1.row(i).equals(t2.row(i)))) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  // static boolean eq(TextBlock t1, TextBlock t2) {
+    
+  // }
+
 } // class TBUtils
