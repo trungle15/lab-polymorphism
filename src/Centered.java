@@ -1,4 +1,10 @@
-// given a text block and a width, builds a new block that centers the block within that width.
+/**
+ * A text box that is center justified.
+ *
+ * @author Trung Le
+ * @author Marina Ananias
+ */
+
 public class Centered implements TextBlock {
 
   // +--------+------------------------------------------------------------
@@ -81,12 +87,12 @@ public class Centered implements TextBlock {
 
   public TextBlock getContent() {
     return content;
-  }
+  } // TextBlock getContent()
 
   public boolean eqv(TextBlock other) {
     boolean b = other instanceof Centered && this instanceof Centered;
     return (b && this.content.eqv(other.getContent()));
-  }
+  } // boolean eqv(TextBlock other)
 
 } // class Centered
   

@@ -1,5 +1,11 @@
-// given a text block and a width, builds a new block that 
-// right-justifies the input block within that width.
+/**
+ * A text block that justify right for its content
+ * 
+ * @author Trung Le
+ * @author Marina Ananias
+ */
+
+
 public class RightJustified implements TextBlock {
 
   // +--------+------------------------------------------------------------
@@ -84,6 +90,12 @@ public class RightJustified implements TextBlock {
     return content;
   }
 
+  /**
+   * Checks if the right justified text block is equivalent to the specified text block.
+   * Two right justified text blocks are considered equivalent if their content is equivalent.
+   * @param other the text block to compare with
+   * @return true if the text blocks are equivalent, false otherwise
+   */
   public boolean eqv(TextBlock other) {
     boolean b = other instanceof RightJustified && this instanceof RightJustified;
     return (b && this.content.eqv(other.getContent()));

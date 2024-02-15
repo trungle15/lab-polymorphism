@@ -1,8 +1,10 @@
 /**
  * A text block surrounded by a box.
  *
- * @author Samuel A. Rebelsky
+ * @author Trung Le
+ * @author Marina Ananias
  */
+
 public class BoxedBlock implements TextBlock {
   // +--------+------------------------------------------------------------
   // | Fields |

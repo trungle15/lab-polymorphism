@@ -59,7 +59,7 @@ public class TBExpt {
 
     /*                                                RightJustified*/
     // Create new right-justified "Hello" in  length of 15
-    TextBlock rightJustifiedBlock = new RightJustified(block, 15);
+    TextBlock rightJustifiedBlock = new RightJustified(block, 30);
 
     // Print out rightjustofiedBlock
     pen.println("Right Justified Block");
@@ -113,6 +113,12 @@ public class TBExpt {
 
     pen.println("4x:");
     TBUtils.print(pen, boxFlipped4x);
+
+    VComposition multiLine = new VComposition(new TextLine("hello"), new TextLine("world"));
+    Mixed mixedBlocks = new Mixed(multiLine);
+
+    pen.println("LLL");
+    TBUtils.print(pen, mixedBlocks);
 
     pen.println("Expected False: " + boxFlipped2x.eqv(boxFlipped4x));
     pen.println("Expected True: " + box1.eqv(box11));

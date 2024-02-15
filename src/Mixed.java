@@ -1,4 +1,11 @@
-  // given a text block and a width, builds a new block that centers the block within that width.
+/**
+ * A text box that justify left for odd rows and right for even rows
+ * 
+ * @author Trung Le
+ * @author Marina Ananias
+ */
+
+
 public class Mixed implements TextBlock {
 
   // +--------+------------------------------------------------------------
@@ -74,15 +81,25 @@ public class Mixed implements TextBlock {
     int w = Math.max(iw, rjw);
     return w;
   } // width()
-
+  
+  /**
+   * Returns the content of the mixed text block.
+   * @return the content of the text block
+   */
   public TextBlock getContent() {
     return content;
-  }
+  } // TextBlock getContent()
 
+  /**
+   * Checks if the mixed text block is equivalent to the specified text block.
+   * Two mixed text blocks are considered equivalent if their content is equivalent.
+   * @param other the text block to compare with
+   * @return true if the text blocks are equivalent, false otherwise
+   */
   public boolean eqv(TextBlock other) {
     boolean b = other instanceof Mixed && this instanceof Mixed;
     return (b && this.content.eqv(other.getContent()));
-  }
+  } // boolean eqv(TextBlock other)
 
 } // class Concated
 
